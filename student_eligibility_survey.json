@@ -1,5 +1,4 @@
-$(function () {
-    var surveyJSON = {
+{
     "locale": "zh-tw",
     "locales": {
         "en": {
@@ -167,21 +166,3 @@ $(function () {
         "zh-tw": "完成"
     }
 }
-
-    var survey = new Survey.Model(surveyJSON);
-
-    $("#surveyElement").Survey({
-        model: survey,
-        onCurrentPageChanged: function (sender, options) {
-            if (sender.currentPage.name === 'page2') {
-                var selectedLanguage = sender.data.language;
-                sender.localeValue = selectedLanguage;
-            }
-        },
-        onComplete: function (sender, options) {
-            $("#surveyElement").hide();
-            $("#result").text(JSON.stringify(sender.data)); // 這裡您可以根據回答產生結果連結
-            $("#result").show();
-        }
-    });
-});
